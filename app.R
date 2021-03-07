@@ -1,8 +1,7 @@
-
-# load your libraries
+# Load the libraries
 library(shiny)
 
-# read in your files (make sure to double check path)
+# read in your files
 source("app_ui.R")
 source("app_server.R")
 
