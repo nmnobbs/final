@@ -12,7 +12,7 @@ source("app_server.R")
 
 # Define structure of tabs------------------------------------------------------
 
-page_one <- tabPanel(
+intro_page <- tabPanel(
   "Data Investigation",
   h1("First Page"),
   sidebarLayout(
@@ -41,11 +41,31 @@ page_three <- tabPanel(
   )
 )
 
+page_four <- tabPanel(
+  "Fourth Tab",
+  sidebarLayout(
+    sidebarPanel(),
+    mainPanel(
+    )
+  )
+)
+
+sum_page <- tabPanel(
+  "Summary Takeaways",
+  sidebarLayout(
+    sidebarPanel(),
+    mainPanel(
+    )
+  )
+)
+
 # Define the UI-----------------------------------------------------------------
 
 ui <- navbarPage(
   "Final Project",
-  page_one,
+  intro_page,
   page_two,
-  page_three
+  page_three,
+  page_four,
+  sum_page
 )
