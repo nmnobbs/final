@@ -10,6 +10,33 @@ source("app_server.R")
 
 # Define Widgets----------------------------------------------------------------
 
+colors_var <- selectInput(
+  inputId = "color_var", label = "Choose Color",
+  choices = c(
+    "Red", "Blue", "Green", "Purple", "Pink",
+    "Brown"
+  )
+)
+
+colors_var2 <- selectInput(
+  inputId = "colors_var2", label = "Choose Color",
+  choices = c(
+    "Dark2", "Accent", "Greens", "Set3", "Pastel1",
+    "Spectral"
+  )
+)
+
+questions_covid <- selectInput(
+  inputId = "questions", label = "Choose Question",
+  choices = c(
+    "1", "2", "3", "4")
+)
+
+genders <- selectInput(
+  inputId = "gender_var", label = "Choose Gender",
+  choices = c(
+    "Male", "Female")
+)
 # Define structure of tabs------------------------------------------------------
 
 intro_page <- tabPanel(
@@ -26,8 +53,12 @@ intro_page <- tabPanel(
 page_two <- tabPanel(
   "Second Tab",
   sidebarLayout(
-    sidebarPanel(),
-    mainPanel(plotOutput("Barchart")
+    sidebarPanel(
+      questions_covid,
+      colors_var
+    ),
+    mainPanel(
+      plotOutput("Barchart")
     )
   )
 )
@@ -35,8 +66,12 @@ page_two <- tabPanel(
 page_three <- tabPanel(
   "Third Tab",
   sidebarLayout(
-    sidebarPanel(),
-    mainPanel(plotOutput("Histogram")
+    sidebarPanel(
+      genders,
+      colors_var2
+    ),
+    mainPanel(
+      plotOutput("Histogram")
     )
   )
 )
@@ -45,7 +80,8 @@ page_four <- tabPanel(
   "Fourth Tab",
   sidebarLayout(
     sidebarPanel(),
-    mainPanel(plotOutput("Scatterplot")
+    mainPanel(
+      plotOutput("Scatterplot")
     )
   )
 )
@@ -69,6 +105,7 @@ ui <- navbarPage(
   page_four,
   sum_page
 )
+<<<<<<< HEAD
 
 #Code for Barchart
 
@@ -148,3 +185,5 @@ chart3 <- dataset2 %>%
 Scatterplot <- ggplot(data = chart3) +
   geom_count(mapping = aes(x= `how would you rate your health`, y = `household size`))
 
+=======
+>>>>>>> 82a5d635a05722636492b4bff986f5ec9ae248d5
