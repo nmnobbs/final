@@ -82,12 +82,11 @@ Histogram <- ggplot(data = dataset_3, mapping = aes(x = `Mental Health Rating`, 
 # Define the server-------------------------------------------------------------
 
 server <- function(input, output) {
-<<<<<<< HEAD
 output$Barchart <- renderPlot({Barchart
     colnames(dataset3) <- c("Male", "Female")
   })
 output$Histogram <- renderPlot({Histogram})
-=======
+
 output$Barchart <- renderPlot({
     chart_data <- dataset3
     colnames(chart_data) <- c(
@@ -106,9 +105,6 @@ output$Histogram <- renderPlot({
     third_c <- dataset7 %>%
       group_by(gender)
     
-    colnames(third_c) <-
-      c("Male", "Female")
-    
     histogram <- ggplot(data = third_c, mapping = aes(
       x =
         `Mental Health Rating`, fill = `Mental Health Rating`)) +
@@ -120,7 +116,6 @@ output$Histogram <- renderPlot({
     histogram
     })
   
->>>>>>> 82a5d635a05722636492b4bff986f5ec9ae248d5
 output$Scatterplot <- renderPlot({Scatterplot})
-
-}
+ 
+}  

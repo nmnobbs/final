@@ -105,7 +105,7 @@ ui <- navbarPage(
   page_four,
   sum_page
 )
-<<<<<<< HEAD
+
 
 #Code for Barchart
 
@@ -152,7 +152,6 @@ tabPanel(
 
       
 #Code for Histogram
-
 dataset_3 <- dataset2 %>%
   select(`how would you rate your health`, gender) %>%
   filter(`how would you rate your health` != "(98) SKIPPED ON WEB") %>%
@@ -185,5 +184,3 @@ chart3 <- dataset2 %>%
 Scatterplot <- ggplot(data = chart3) +
   geom_count(mapping = aes(x= `how would you rate your health`, y = `household size`))
 
-=======
->>>>>>> 82a5d635a05722636492b4bff986f5ec9ae248d5
