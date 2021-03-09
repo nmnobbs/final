@@ -70,21 +70,6 @@ ui <- navbarPage(
   sum_page
 )
 
-# Code For Scatterplot
-
-dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`, gender , race, RACE_R2 , EDUCATION, `household size`, P_GEO)
-chart3 <- dataset2 %>% 
-  filter(`how would you rate your health` !=  "(98) SKIPPED ON WEB") %>% 
-  filter(`household size` != "(99) REFUSED") %>% 
-  filter(`household size` != "(98) SKIPPED ON WEB")
-
-Scatterplot <- ggplot(data = chart3) +
-  geom_count(mapping = aes(x= `how would you rate your health`, y = `household size`))
-
-
-
-
-
 #Code for Barchart
 
 data_items <- dataset3 %>% 
@@ -116,11 +101,19 @@ names(dataset3)[names(dataset3) == "talk with neighbor in month before covid"] <
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friends"] <- "3"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friend before covid"] <- "4"
 
+tabPanel(
+  titlePanel("Barchart"),
+  sidebarLayout(
+    sidebarPanel(
+      mainPanel(plotOutput(outputId = "Barchart")),
+      h3("Adjustable Paramaters"),
+      selectInput(
+        inputId = "gender",
+        label = "Response comparison based on gender",
+        choices = c("Male", "Female"))),
+  ))
 
-
-
-
-
+      
 #Code for Histogram
 
 dataset_3 <- dataset2 %>%
@@ -144,6 +137,14 @@ Histogram <- ggplot(data = dataset_3, mapping = aes(x = `Mental Health Rating`, 
   labs(x = "Level of Mental Health", y = "Amount of Responses") +
   facet_wrap(~gender, labeller = "label_both") 
 
+# Code For Scatterplot
 
+dataset2 <- dataset %>%  select(`how much do you trust your neighborhood`:`how would you rate your health`, gender , race, RACE_R2 , EDUCATION, `household size`, P_GEO)
+chart3 <- dataset2 %>% 
+  filter(`how would you rate your health` !=  "(98) SKIPPED ON WEB") %>% 
+  filter(`household size` != "(99) REFUSED") %>% 
+  filter(`household size` != "(98) SKIPPED ON WEB")
 
+Scatterplot <- ggplot(data = chart3) +
+  geom_count(mapping = aes(x= `how would you rate your health`, y = `household size`))
 

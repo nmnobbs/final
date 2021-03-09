@@ -19,8 +19,11 @@ library(tidyverse)
 # Define the server-------------------------------------------------------------
 
 server <- function(input, output) {
-output$Barchart <- renderPlot({Barchart})
+output$Barchart <- renderPlot({Barchart
+    colnames(dataset3) <- c("Male", "Female")
+  })
 output$Histogram <- renderPlot({Histogram})
 output$Scatterplot <- renderPlot({Scatterplot})
+
 }
 
