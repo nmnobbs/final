@@ -97,7 +97,14 @@ page_four <- tabPanel(
   sidebarLayout(
     sidebarPanel(),
     mainPanel(
-      plotOutput("Scatterplot")
+      plotOutput("Scatterplot"),
+      p(strong("KEY")),
+      p("1 = Excellent"),
+      p("2 = Very good"),
+      p("3 = Good"),
+      p("4 = Fair"),
+      p("5 = Poor"),
+      p("6 = Do not know"),
     )
   )
 )
