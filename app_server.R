@@ -41,9 +41,9 @@ dataset3 <- dataset2 %>%
   filter(`talk with neighbor in month` != "(98) SKIPPED ON WEB")
 
 dataset3$`talk with neighbor in month` <- as.character(dataset3$`talk with neighbor in month`)
-dataset3[dataset3 == "(1) Basically every day"] <- "Basically every day"
-dataset3[dataset3 == "(2) A few times a week"] <- "A few times a week"
-dataset3[dataset3 == "(3) A few times a month"] <- "A few times a month"
+dataset3[dataset3 == "(1) Basically every day"] <- "Every day"
+dataset3[dataset3 == "(2) A few times a week"] <- "few times a / W"
+dataset3[dataset3 == "(3) A few times a month"] <- "few times a / M"
 dataset3[dataset3 == "(4) Once a month"] <- "Once a month"
 dataset3[dataset3 == "(5) Not at all"] <- "Not at all"
 dataset3[dataset3 == "(98) SKIPPED ON WEB"] <- "Skipped on web"
