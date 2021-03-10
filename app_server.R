@@ -98,7 +98,7 @@ output$Barchart <- renderPlot({
 
 output$Histogram <- renderPlot({
 
-    third_c <- dataset7 
+    third_c <- dataset_3 
     data.frame(gender = sample(c("Female", "Male"), 7494, replace = TRUE))
     third_c$Female = ifelse(third_c$gender == "(2) Female", 1, 0)
     third_c$Male = ifelse(third_c$gender == "(1) Male", 1, 0)
