@@ -137,19 +137,6 @@ names(dataset3)[names(dataset3) == "talk with neighbor in month"] <- "1"
 names(dataset3)[names(dataset3) == "talk with neighbor in month before covid"] <- "2"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friends"] <- "3"
 names(dataset3)[names(dataset3) == "how often did you stay in touch with family/friend before covid"] <- "4"
-
-tabPanel(
-  titlePanel("Barchart"),
-  sidebarLayout(
-    sidebarPanel(
-      mainPanel(plotOutput(outputId = "Barchart")),
-      h3("Adjustable Paramaters"),
-      selectInput(
-        inputId = "gender",
-        label = "Response comparison based on gender",
-        choices = c("Male", "Female"))),
-  ))
-
       
 #Code for Histogram
 dataset_3 <- dataset2 %>%

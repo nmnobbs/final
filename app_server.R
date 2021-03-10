@@ -82,10 +82,6 @@ Histogram <- ggplot(data = dataset_3, mapping = aes(x = `Mental Health Rating`, 
 # Define the server-------------------------------------------------------------
 
 server <- function(input, output) {
-output$Barchart <- renderPlot({Barchart
-    colnames(dataset3) <- c("Male", "Female")
-  })
-output$Histogram <- renderPlot({Histogram})
 
 output$Barchart <- renderPlot({
     chart_data <- dataset3
@@ -102,16 +98,22 @@ output$Barchart <- renderPlot({
 
 output$Histogram <- renderPlot({
 
-    third_c <- dataset7 %>%
-      group_by(gender)
+    third_c <- dataset7 
+    data.frame(gender = sample(c("Female", "Male"), 7494, replace = TRUE))
+    third_c$Female = ifelse(third_c$gender == "(2) Female", 1, 0)
+    third_c$Male = ifelse(third_c$gender == "(1) Male", 1, 0)
     
-    histogram <- ggplot(data = third_c, mapping = aes(
+    histogram <- third_c %>%
+      filter(Female != "0") %>%
+      filter(Male != "0") %>%
+       ggplot(data = third_c, mapping = aes(
       x =
         `Mental Health Rating`, fill = `Mental Health Rating`)) +
       geom_histogram(binwidth = 1, stat = "count") +
       labs(x = "Level of Mental Health", y = "Amount of Responses") +
-      facet_wrap(dataset7[[input$gender_var]], labeller = "label_value") +
+      facet_wrap(third_c[[input$gender_var]], labeller = "label_value") +
       scale_fill_brewer(palette= input$colors_var2)
+    
     
     histogram
     })
